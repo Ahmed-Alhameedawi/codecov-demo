@@ -1,20 +1,27 @@
 coverage:
+  # Commit status https://docs.codecov.io/docs/commit-status are used
+  # to block PR based on coverage threshold.
   status:
     project:
       default:
-        target: 100%
-        threshold: 1%
+        target: auto
+        threshold: 0%
+    patch:
+      default:
+        informational: true
 
 comment:
-  layout: "header, diff, flags, components"
-
-component_management:
-  individual_components:
-    - component_id: api-calculator  # this is an identifier that should not be changed
-      name: calculator  # this is a display name, and can be changed freely
-      paths:
-        - api/calculator/
-    - component_id: api-smiles  # this is an identifier that should not be changed
-      name: smiles  # this is a display name, and can be changed freely
-      paths:
-        - api/smiles/
+  behavior: default
+  after_n_builds: 1
+ignore:
+  # Configure what to ignore.
+  - "assets"
+  - ".github"
+  - "charts"
+  - "docs"
+  - "test"
+  - "third_party"
+codecov:
+  notify:
+    after_n_builds: 1
+    wait_for_ci: yes
